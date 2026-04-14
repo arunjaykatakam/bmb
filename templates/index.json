@@ -9,18 +9,154 @@
     },
     "steps": {
       "type": "home-steps",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Choose your plan",
+            "copy": "Select the subscription tier that fits your family's building appetite - from casual builders to LEGO masters."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Browse & Borrow",
+            "copy": "Explore our massive library of sets, from City adventures to Technic challenges. Click \"Borrow This Set\" and we'll post it out."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Build & Play",
+            "copy": "Enjoy your LEGO set for as long as you like. Follow instructions or freestyle - the possibilities are endless!"
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "title": "Return & Repeat",
+            "copy": "Pack it up, send it back (we provide labels for Starter tier), and request your next set. Keep the adventures rolling!"
+          }
+        }
+      },
+      "block_order": ["step_1", "step_2", "step_3", "step_4"],
       "settings": {}
     },
     "plans": {
       "type": "home-plans",
+      "blocks": {
+        "plan_1": {
+          "type": "plan",
+          "settings": {
+            "label": "Starter builder",
+            "title": "Starter Builder",
+            "price": "£10/month",
+            "copy": "Perfect for curious beginners who want to dip their toes into the LEGO world.",
+            "feature_1": "1 set per month",
+            "feature_2": "Postage included both ways",
+            "feature_3": "Access to Basic and Intermediate sets",
+            "feature_4": "Ages 4-10 recommended",
+            "button_label": "Join Now",
+            "link": "#join",
+            "featured": true
+          }
+        },
+        "plan_2": {
+          "type": "plan",
+          "settings": {
+            "label": "Most popular",
+            "title": "Unlimited Builder",
+            "price": "£20/month",
+            "copy": "For families who can't get enough LEGO! Swap sets as often as you like.",
+            "feature_1": "Unlimited sets per month",
+            "feature_2": "You cover return postage",
+            "feature_3": "Access to all standard sets",
+            "feature_4": "Ages 8-12 recommended",
+            "button_label": "Most Popular",
+            "link": "#join",
+            "featured": false
+          }
+        },
+        "plan_3": {
+          "type": "plan",
+          "settings": {
+            "label": "Premium",
+            "title": "Master Builder",
+            "price": "£50/month",
+            "copy": "The ultimate experience for serious LEGO enthusiasts and advanced builders.",
+            "feature_1": "Unlimited premium sets per month",
+            "feature_2": "You cover return postage",
+            "feature_3": "Exclusive Technic & advanced sets",
+            "feature_4": "Ages 8-12 recommended",
+            "button_label": "Go Premium",
+            "link": "#join",
+            "featured": false
+          }
+        }
+      },
+      "block_order": ["plan_1", "plan_2", "plan_3"],
       "settings": {}
     },
     "returns": {
       "type": "home-returns",
+      "blocks": {
+        "returns_1": {
+          "type": "returns_option",
+          "settings": {
+            "title": "Starter builder plan",
+            "copy": "We've made it super simple. Your monthly set comes with a prepaid return label included. When you're ready to swap, just pack it up, stick on the label, and drop it at your nearest post office or collection point.",
+            "feature_1": "Prepaid return label included",
+            "feature_2": "Return postage fully covered",
+            "feature_3": "One set per month cycle"
+          }
+        },
+        "returns_2": {
+          "type": "returns_option",
+          "settings": {
+            "title": "Unlimited & master plans",
+            "copy": "With unlimited borrowing comes flexibility. You'll receive return labels via email that you can print at home. Simply purchase postage based on the set size - we'll provide weight estimates to make it easy.",
+            "feature_1": "Email return labels provided",
+            "feature_2": "You arrange return postage",
+            "feature_3": "Swap as often as you like"
+          }
+        }
+      },
+      "block_order": ["returns_1", "returns_2"],
       "settings": {}
     },
     "faq": {
       "type": "home-faq",
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "What if pieces are missing when I return a set?",
+            "answer": "Don't panic. We understand that LEGO pieces sometimes go on adventures of their own. A few missing standard pieces are absolutely fine - we have spares. Just let us know in your return note."
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I keep a set longer than a month?",
+            "answer": "Of course. There's no rush. Keep sets as long as you're enjoying them. For Starter Builder members, you'll receive your next set after returning the current one. Unlimited members can have up to two sets at once."
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "What if my child loves a set and wants to keep it?",
+            "answer": "We get it - sometimes you build something special! Contact us and we'll help you purchase the set at a discounted rate, with your rental period credited."
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "How do you clean and check the sets?",
+            "answer": "Every returned set is thoroughly inspected, cleaned, and quality-checked before going back into circulation. We sanitise all pieces and ensure instructions are complete and in excellent condition."
+          }
+        }
+      },
+      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4"],
       "settings": {}
     },
     "cta": {
