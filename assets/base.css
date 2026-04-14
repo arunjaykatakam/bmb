@@ -304,21 +304,19 @@ a {
 .steps-grid,
 .plans-grid,
 .returns-grid,
+.faq-list,
 .footer-grid {
   display: grid;
   gap: 24px;
 }
 
 .steps-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 44px 26px;
 }
 
 .step-card,
 .plan-card,
-.returns-card,
-.faq-item,
-.proof-stat,
-.quote-card,
 .cta-panel,
 .footer-card {
   background:
@@ -336,25 +334,26 @@ a {
   box-shadow: none;
 }
 
-.step-number {
-  width: auto;
-  height: auto;
-  display: inline-flex;
+.step-icon-row {
+  display: flex;
   align-items: center;
-  gap: 14px;
-  background: transparent;
-  color: #ff8e9f;
-  font-family: "Kanit", sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
+  gap: 18px;
   margin-bottom: 18px;
 }
 
-.step-number::after {
-  content: "";
-  width: 56px;
+.step-icon {
+  color: #aeb5e2;
+  font-family: "Kanit", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1;
+  min-width: 38px;
+}
+
+.step-line {
+  flex: 1;
   height: 2px;
-  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+  background: linear-gradient(90deg, var(--brand), #f4845f);
 }
 
 .plans-grid {
@@ -366,11 +365,15 @@ a {
   padding: 0;
   gap: 0;
   overflow: hidden;
+  background: transparent;
+  background-image: none;
+  border: 1px solid rgba(82, 74, 131, 0.55);
+  box-shadow: none;
 }
 
 .plan-card--featured {
-  border-color: rgba(255, 113, 97, 0.72);
-  box-shadow: 0 0 0 1px rgba(255, 113, 97, 0.18), 0 28px 85px rgba(5, 1, 18, 0.55);
+  border-color: rgba(250, 100, 113, 0.75);
+  box-shadow: inset 0 0 0 1px rgba(250, 100, 113, 0.15);
   transform: none;
 }
 
@@ -381,14 +384,31 @@ a {
 
 .plan-label {
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 1rem 1.1rem;
-  background: linear-gradient(151deg, var(--brand), var(--brand-2));
-  color: #150f33;
+  min-height: 54px;
+  padding: 0.8rem 1.1rem;
+  background: rgba(43, 34, 89, 0.9);
+  color: #d8ddff;
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+.plan-card--featured .plan-label {
+  background: #e85c67;
+  color: #140e31;
+}
+
+.plan-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Kanit", sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0;
 }
 
 .plan-card > h3,
@@ -407,10 +427,25 @@ a {
 .plan-price {
   margin: 18px 0 10px;
   font-family: "Kanit", sans-serif;
-  font-size: clamp(3rem, 5vw, 4rem);
+  font-size: clamp(2.7rem, 4vw, 3.5rem);
   line-height: 1;
   letter-spacing: -0.05em;
   font-weight: 400;
+}
+
+.plan-price:first-line,
+.plan-price {
+  color: #f66b67;
+}
+
+.plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.1em;
+}
+
+.plan-card p {
+  max-width: 13ch;
 }
 
 .feature-list {
@@ -429,10 +464,10 @@ a {
 }
 
 .feature-list li::before {
-  content: "+";
-  color: var(--brand-2);
-  font-family: "Kanit", sans-serif;
-  font-size: 1.2rem;
+  content: "•";
+  color: var(--muted-strong);
+  font-family: inherit;
+  font-size: 1.4rem;
   line-height: 1;
 }
 
@@ -440,89 +475,65 @@ a {
   grid-template-columns: repeat(2, 1fr);
   align-items: start;
   margin-top: 28px;
+  gap: 52px;
 }
 
-.returns-card,
 .faq-item,
-.proof-stat,
-.quote-card,
 .cta-panel,
 .footer-card {
   padding: 34px 30px;
+}
+
+.returns-card {
+  padding: 0;
+  background: transparent;
+  background-image: none;
+  border: 0;
+  box-shadow: none;
+}
+
+.returns-card h3 {
+  color: #fa6a67;
+  margin-bottom: 18px;
 }
 
 .note-banner {
   margin-top: 24px;
   padding: 24px 28px;
   border-radius: 0;
-  background: rgba(250, 47, 92, 0.08);
-  border: 1px solid rgba(250, 47, 92, 0.2);
+  background: #641010;
+  border: 0;
   color: var(--muted-strong);
 }
 
 .faq-list {
-  display: grid;
-  gap: 16px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 18px;
   margin-top: 28px;
 }
 
 .faq-item h3 {
   margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .faq-item {
   background: transparent;
-  border: 0;
-  border-left: 3px solid var(--brand);
+  background-image: none;
+  border: 1px solid rgba(102, 95, 146, 0.75);
   box-shadow: none;
-  padding: 8px 0 8px 22px;
+  padding: 28px 28px 30px 34px;
+  position: relative;
 }
 
-.proof-grid {
-  display: grid;
-  gap: 24px;
-}
-
-.proof-stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-}
-
-.proof-stat {
-  text-align: center;
-  padding: 28px 22px;
-}
-
-.proof-stat__number {
-  font-family: "Kanit", sans-serif;
-  font-size: clamp(2.8rem, 5vw, 4rem);
-  line-height: 1;
-  color: var(--muted-strong);
-  margin-bottom: 14px;
-}
-
-.proof-stat h3 {
-  margin: 0 0 8px;
-}
-
-.quote-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-}
-
-.quote-card p:first-child {
-  font-style: italic;
-  font-size: 1.08rem;
-}
-
-.quote-card cite {
-  display: block;
-  margin-top: 18px;
-  color: var(--muted-strong);
-  font-style: normal;
+.faq-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  background: linear-gradient(180deg, var(--brand), var(--brand-2));
 }
 
 .cta-grid {
@@ -585,7 +596,6 @@ a {
 
 #how-it-works .section-card,
 #plans .section-card,
-#proof .section-card,
 #returns .section-card,
 #faq .section-card,
 #join .cta-panel,
@@ -595,7 +605,6 @@ a {
 
 #how-it-works .section-card,
 #plans .section-card,
-#proof .section-card,
 #returns .section-card,
 #faq .section-card,
 #join,
@@ -613,7 +622,6 @@ a {
 }
 
 #plans .section-card,
-#proof .section-card,
 #join .cta-panel,
 .footer-card {
   background:
@@ -634,11 +642,13 @@ a {
   .hero__card,
   .steps-grid,
   .plans-grid,
-  .proof-stats,
-  .quote-grid,
   .returns-grid,
   .cta-grid,
   .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-list {
     grid-template-columns: 1fr;
   }
 
@@ -685,7 +695,6 @@ a {
 
   #how-it-works .section-card,
   #plans .section-card,
-  #proof .section-card,
   #returns .section-card,
   #faq .section-card,
   #join .cta-panel,

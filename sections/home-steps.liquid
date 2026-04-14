@@ -6,7 +6,17 @@
       <div class="steps-grid">
         {% for block in section.blocks %}
           <article class="step-card" {{ block.shopify_attributes }}>
-            <div class="step-number">{{ forloop.index }}</div>
+            <div class="step-icon-row">
+              <div class="step-icon step-icon--{{ forloop.index }}">
+                {% case forloop.index %}
+                  {% when 1 %}x1
+                  {% when 2 %}/_
+                  {% when 3 %}o
+                  {% when 4 %}[] 
+                {% endcase %}
+              </div>
+              <div class="step-line"></div>
+            </div>
             <h3>{{ block.settings.title }}</h3>
             <p>{{ block.settings.copy }}</p>
           </article>

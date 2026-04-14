@@ -7,7 +7,14 @@
       <div class="plans-grid">
         {% for block in section.blocks %}
           <article class="plan-card {% if block.settings.featured %}plan-card--featured{% endif %}" {{ block.shopify_attributes }}>
-            <span class="plan-label">{{ block.settings.label }}</span>
+            <span class="plan-label">
+              <span class="plan-badge">
+                {% if block.settings.title contains 'Starter' %}[] 
+                {% elsif block.settings.title contains 'Unlimited' %}oo
+                {% else %}[]+
+                {% endif %}
+              </span>
+            </span>
             <h3>{{ block.settings.title }}</h3>
             <div class="plan-price">{{ block.settings.price }}</div>
             <p>{{ block.settings.copy }}</p>
