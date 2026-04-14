@@ -16,7 +16,13 @@
               </span>
             </span>
             <h3>{{ block.settings.title }}</h3>
-            <div class="plan-price">{{ block.settings.price }}</div>
+            {% assign price_parts = block.settings.price | split: '/' %}
+            <div class="plan-price">
+              <span class="plan-price__amount">{{ price_parts[0] }}</span>
+              {% if price_parts.size > 1 %}
+                <span class="plan-price__unit">/{{ price_parts[1] }}</span>
+              {% endif %}
+            </div>
             <p>{{ block.settings.copy }}</p>
             <ul class="feature-list">
               {% if block.settings.feature_1 != blank %}<li>{{ block.settings.feature_1 }}</li>{% endif %}
@@ -25,7 +31,7 @@
               {% if block.settings.feature_4 != blank %}<li>{{ block.settings.feature_4 }}</li>{% endif %}
             </ul>
             <div class="plan-card__action">
-              <a class="{% if block.settings.featured %}button{% else %}button-secondary{% endif %}" href="{{ block.settings.link | default: '#join' }}">{{ block.settings.button_label }}</a>
+              <a class="button plan-button" href="{{ block.settings.link | default: '#join' }}">{{ block.settings.button_label }}</a>
             </div>
           </article>
         {% endfor %}

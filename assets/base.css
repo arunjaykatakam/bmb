@@ -603,6 +603,21 @@ a {
   padding: clamp(40px, 5vw, 72px);
 }
 
+#how-it-works .eyebrow,
+#plans .eyebrow,
+#returns .eyebrow,
+#faq .eyebrow {
+  display: none;
+}
+
+#how-it-works .section-heading,
+#plans .section-heading,
+#returns .section-heading,
+#faq .section-heading {
+  margin-top: 0;
+  margin-bottom: 28px;
+}
+
 #how-it-works .section-card,
 #plans .section-card,
 #returns .section-card,
@@ -630,6 +645,99 @@ a {
   background-size: cover;
 }
 
+#how-it-works .step-card h3 {
+  font-size: 1.55rem;
+  margin-bottom: 10px;
+}
+
+#how-it-works .step-card p {
+  font-size: 1.15rem;
+  max-width: 24ch;
+}
+
+#plans .section-copy {
+  max-width: 48ch;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  margin-bottom: 6px;
+}
+
+#plans .plan-card {
+  min-height: 520px;
+}
+
+#plans .plan-card h3 {
+  font-size: 1.35rem;
+}
+
+#plans .plan-price {
+  margin-top: 6px;
+  margin-bottom: 12px;
+}
+
+#plans .plan-price__amount {
+  color: #f66b67;
+}
+
+#plans .plan-price__unit {
+  color: #ffffff;
+}
+
+#plans .plan-card p,
+#plans .feature-list li {
+  font-size: 0.98rem;
+  line-height: 1.45;
+}
+
+#plans .plan-button {
+  min-height: 46px;
+  padding: 0.75rem 1.2rem;
+  font-size: 0.95rem;
+  justify-content: flex-start;
+}
+
+#returns .section-heading {
+  margin-bottom: 40px;
+}
+
+#returns .returns-card h3 {
+  font-size: 1.35rem;
+}
+
+#returns .returns-card p,
+#returns .feature-list li {
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+#returns .note-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  font-size: 1.02rem;
+}
+
+.note-banner__icon {
+  color: #ffb7b7;
+  font-family: "Kanit", sans-serif;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+#faq .section-heading {
+  margin-bottom: 34px;
+}
+
+#faq .faq-item h3 {
+  font-size: 1.32rem;
+  line-height: 1.25;
+}
+
+#faq .faq-item p {
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
 #join .cta-panel:first-child {
   background:
     linear-gradient(180deg, rgba(16, 12, 53, 0.68), rgba(16, 12, 53, 0.88)),
@@ -650,6 +758,10 @@ a {
 
   .faq-list {
     grid-template-columns: 1fr;
+  }
+
+  #plans .plan-card {
+    min-height: auto;
   }
 
   .hero__visual {
