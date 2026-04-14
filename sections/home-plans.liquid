@@ -1,10 +1,10 @@
 <section id="plans" class="section-shell">
   <div class="page-width">
-    <div class="section-card" style="padding: 32px;">
+    <div class="section-card">
       <div class="eyebrow">{{ section.settings.eyebrow }}</div>
       <h2 class="section-heading">{{ section.settings.heading }}</h2>
       <div class="section-copy">{{ section.settings.copy }}</div>
-      <div class="plans-grid" style="margin-top: 24px;">
+      <div class="plans-grid">
         {% for block in section.blocks %}
           <article class="plan-card {% if block.settings.featured %}plan-card--featured{% endif %}" {{ block.shopify_attributes }}>
             <span class="plan-label">{{ block.settings.label }}</span>
@@ -17,7 +17,7 @@
               {% if block.settings.feature_3 != blank %}<li>{{ block.settings.feature_3 }}</li>{% endif %}
               {% if block.settings.feature_4 != blank %}<li>{{ block.settings.feature_4 }}</li>{% endif %}
             </ul>
-            <div style="margin-top: 22px;">
+            <div class="plan-card__action">
               <a class="{% if block.settings.featured %}button{% else %}button-secondary{% endif %}" href="{{ block.settings.link | default: '#join' }}">{{ block.settings.button_label }}</a>
             </div>
           </article>
