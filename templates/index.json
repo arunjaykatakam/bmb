@@ -1,0 +1,42 @@
+{
+  "sections": {
+    "hero": {
+      "type": "home-hero",
+      "settings": {
+        "primary_link": "#plans",
+        "secondary_link": "#how-it-works"
+      }
+    },
+    "steps": {
+      "type": "home-steps",
+      "settings": {}
+    },
+    "plans": {
+      "type": "home-plans",
+      "settings": {}
+    },
+    "returns": {
+      "type": "home-returns",
+      "settings": {}
+    },
+    "faq": {
+      "type": "home-faq",
+      "settings": {}
+    },
+    "cta": {
+      "type": "home-cta",
+      "settings": {
+        "primary_link": "#plans",
+        "secondary_link": "mailto:hello@borrowmybricks.com"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "steps",
+    "plans",
+    "returns",
+    "faq",
+    "cta"
+  ]
+}

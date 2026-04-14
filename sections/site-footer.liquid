@@ -1,0 +1,38 @@
+<footer class="site-footer">
+  <div class="page-width site-footer__inner">
+    <div class="footer-card section-card">
+      <div class="footer-grid">
+        <div>
+          <div class="eyebrow">BorrowMyBricks</div>
+          <p class="legal">
+            Terms &amp; Conditions apply. Privacy Policy available on request. BorrowMyBricks is not affiliated with The LEGO Group. The LEGO logo is a registered trademark of the LEGO Group.
+          </p>
+        </div>
+        <div class="legal">
+          <strong>{{ section.settings.email }}</strong><br>
+          {{ section.settings.tagline }}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Site footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Contact email",
+      "default": "hello@borrowmybricks.com"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Footer tagline",
+      "default": "Borrow. Build. Return. Repeat."
+    }
+  ]
+}
+{% endschema %}

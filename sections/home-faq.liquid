@@ -1,0 +1,81 @@
+<section id="faq" class="section-shell">
+  <div class="page-width">
+    <div class="section-card" style="padding: 32px;">
+      <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+      <h2 class="section-heading">{{ section.settings.heading }}</h2>
+      <div class="faq-list">
+        {% for block in section.blocks %}
+          <article class="faq-item" {{ block.shopify_attributes }}>
+            <h3>{{ block.settings.question }}</h3>
+            <p>{{ block.settings.answer }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Helpful details"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question" },
+        { "type": "textarea", "id": "answer", "label": "Answer" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What if pieces are missing when I return a set?",
+            "answer": "Don't panic. We understand that LEGO pieces sometimes go on adventures of their own. A few missing standard pieces are absolutely fine - we have spares. Just let us know in your return note."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can I keep a set longer than a month?",
+            "answer": "Of course. There's no rush. Keep sets as long as you're enjoying them. For Starter Builder members, you'll receive your next set after returning the current one. Unlimited members can have up to two sets at once."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What if my child loves a set and wants to keep it?",
+            "answer": "Contact us and we'll help you purchase the set at a discounted rate, with your rental period credited."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How do you clean and check the sets?",
+            "answer": "Every returned set is thoroughly inspected, cleaned, and quality-checked before going back into circulation. We sanitise all pieces and ensure instructions are complete and in excellent condition."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

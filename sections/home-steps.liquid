@@ -1,0 +1,91 @@
+<section id="how-it-works" class="section-shell">
+  <div class="page-width">
+    <div class="section-card" style="padding: 32px;">
+      <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+      <h2 class="section-heading">{{ section.settings.heading }}</h2>
+      <div class="steps-grid">
+        {% for block in section.blocks %}
+          <article class="step-card" {{ block.shopify_attributes }}>
+            <div class="step-number">{{ forloop.index }}</div>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.copy }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How it works",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "How it works"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "How BorrowMyBricks works"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "copy",
+          "label": "Copy"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "How it works",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Choose your plan",
+            "copy": "Select the subscription tier that fits your family's building appetite - from casual builders to LEGO masters."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Browse & Borrow",
+            "copy": "Explore our massive library of sets, from City adventures to Technic challenges. Click \"Borrow This Set\" and we'll post it out."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Build & Play",
+            "copy": "Enjoy your LEGO set for as long as you like. Follow instructions or freestyle - the possibilities are endless!"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Return & Repeat",
+            "copy": "Pack it up, send it back, and request your next set. Keep the adventures rolling."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

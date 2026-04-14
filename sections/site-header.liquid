@@ -1,0 +1,29 @@
+<header class="site-header">
+  <div class="page-width site-header__inner">
+    <a class="site-brand" href="/">
+      <span class="site-brand__mark" aria-hidden="true"><span>B</span></span>
+      <span>{{ section.settings.brand_name }}</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#how-it-works">How it works</a>
+      <a href="#plans">Plans</a>
+      <a href="#returns">Returns</a>
+      <a href="#faq">FAQ</a>
+      <a href="#join">Join today</a>
+    </nav>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Site header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "Brand name",
+      "default": "BorrowMyBricks"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,97 @@
+<section class="hero section-shell">
+  <div class="page-width">
+    <div class="hero__card section-card">
+      <div class="hero__content">
+        <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+        <h1 class="hero__headline">{{ section.settings.heading }}</h1>
+        <div class="hero__lede">{{ section.settings.copy }}</div>
+        <div class="button-row">
+          <a class="button" href="{{ section.settings.primary_link | default: '#plans' }}">{{ section.settings.primary_label }}</a>
+          <a class="button-secondary" href="{{ section.settings.secondary_link | default: '#how-it-works' }}">{{ section.settings.secondary_label }}</a>
+        </div>
+      </div>
+      <div class="hero__visual" aria-hidden="true">
+        <div class="hero__stack">
+          <div class="hero__brick">
+            <strong>Hundreds of LEGO sets</strong>
+            <div>From City builds to advanced Technic challenges, all ready to borrow.</div>
+          </div>
+          <div class="hero__brick">
+            <strong>Built for families</strong>
+            <div>Big adventures for curious builders without the long-term clutter.</div>
+          </div>
+        </div>
+        <div class="hero__play">
+          <div class="mini-card">
+            <span>D</span>
+            <strong>Delivered</strong>
+            <div>Straight to your door</div>
+          </div>
+          <div class="mini-card">
+            <span>B</span>
+            <strong>Build</strong>
+            <div>Instructions or freestyle</div>
+          </div>
+          <div class="mini-card">
+            <span>R</span>
+            <strong>Swap</strong>
+            <div>Return and try something new</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "UK LEGO rental subscription"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Borrow. Build. Return. Repeat."
+    },
+    {
+      "type": "textarea",
+      "id": "copy",
+      "label": "Copy",
+      "default": "Welcome to BorrowMyBricks.com - the UK's most exciting LEGO rental subscription for families. Say goodbye to cluttered toy boxes and hello to endless building adventures. Choose from hundreds of LEGO sets, delivered straight to your door. Build amazing creations, enjoy the fun, then return and swap for something new. It's sustainable, affordable, and absolutely brilliant for curious young builders."
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "Choose your plan"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button label",
+      "default": "How it works"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home hero"
+    }
+  ]
+}
+{% endschema %}
