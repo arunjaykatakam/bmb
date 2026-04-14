@@ -1,0 +1,105 @@
+<section id="proof" class="section-shell">
+  <div class="page-width">
+    <div class="section-card">
+      <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+      <h2 class="section-heading">{{ section.settings.heading }}</h2>
+      <div class="proof-grid">
+        <div class="proof-stats">
+          {% for block in section.blocks %}
+            {% if block.type == 'stat' %}
+              <article class="proof-stat" {{ block.shopify_attributes }}>
+                <div class="proof-stat__number">{{ block.settings.number }}</div>
+                <h3>{{ block.settings.title }}</h3>
+                <p>{{ block.settings.copy }}</p>
+              </article>
+            {% endif %}
+          {% endfor %}
+        </div>
+        <div class="quote-grid">
+          {% for block in section.blocks %}
+            {% if block.type == 'quote' %}
+              <article class="quote-card" {{ block.shopify_attributes }}>
+                <p>{{ block.settings.quote }}</p>
+                <cite>{{ block.settings.author }}</cite>
+              </article>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Social proof",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Why families love it" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Why Families Love BorrowMyBricks" }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Number" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "textarea", "id": "copy", "label": "Copy" }
+      ]
+    },
+    {
+      "type": "quote",
+      "name": "Quote",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "text", "id": "author", "label": "Author" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social proof",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "number": "95%",
+            "title": "Customer Satisfaction",
+            "copy": "Families rate us 5 stars for service, quality, and fun factor"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": "500+",
+            "title": "Sets Available",
+            "copy": "Massive library covering all themes, ages, and difficulty levels"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": "73%",
+            "title": "Less Clutter",
+            "copy": "Parents report significantly tidier homes since joining"
+          }
+        },
+        {
+          "type": "quote",
+          "settings": {
+            "quote": "\"Absolute game-changer for our family! My son gets to try so many different sets without breaking the bank. The quality is brilliant and customer service is top-notch.\"",
+            "author": "Sarah M., Manchester"
+          }
+        },
+        {
+          "type": "quote",
+          "settings": {
+            "quote": "\"We love the variety! From City to Technic, my kids never get bored. Plus, no more LEGO taking over the house permanently. Genius idea!\"",
+            "author": "James P., Bristol"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

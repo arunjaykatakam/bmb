@@ -15,6 +15,10 @@
       "type": "home-plans",
       "settings": {}
     },
+    "proof": {
+      "type": "home-proof",
+      "settings": {}
+    },
     "returns": {
       "type": "home-returns",
       "settings": {}
@@ -35,6 +39,7 @@
     "hero",
     "steps",
     "plans",
+    "proof",
     "returns",
     "faq",
     "cta"

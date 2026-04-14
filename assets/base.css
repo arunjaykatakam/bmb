@@ -317,6 +317,8 @@ a {
 .plan-card,
 .returns-card,
 .faq-item,
+.proof-stat,
+.quote-card,
 .cta-panel,
 .footer-card {
   background:
@@ -328,21 +330,31 @@ a {
 }
 
 .step-card {
-  padding: 34px 28px 32px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
 .step-number {
-  width: 54px;
-  height: 54px;
-  display: grid;
-  place-items: center;
-  border-radius: 0;
-  background: linear-gradient(135deg, var(--brand), var(--brand-2));
-  color: #140d32;
+  width: auto;
+  height: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: transparent;
+  color: #ff8e9f;
   font-family: "Kanit", sans-serif;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
+}
+
+.step-number::after {
+  content: "";
+  width: 56px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
 }
 
 .plans-grid {
@@ -351,7 +363,9 @@ a {
 }
 
 .plan-card {
-  padding: 34px 30px 32px;
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
 }
 
 .plan-card--featured {
@@ -366,15 +380,28 @@ a {
 }
 
 .plan-label {
-  display: inline-flex;
-  padding: 0.35rem 0.7rem;
-  border-radius: 0;
-  background: rgba(250, 47, 92, 0.12);
-  color: #ff9fb0;
+  display: flex;
+  width: 100%;
+  padding: 1rem 1.1rem;
+  background: linear-gradient(151deg, var(--brand), var(--brand-2));
+  color: #150f33;
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+.plan-card > h3,
+.plan-card > .plan-price,
+.plan-card > p,
+.plan-card > .feature-list,
+.plan-card > .plan-card__action {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.plan-card > h3 {
+  padding-top: 28px;
 }
 
 .plan-price {
@@ -412,10 +439,13 @@ a {
 .returns-grid {
   grid-template-columns: repeat(2, 1fr);
   align-items: start;
+  margin-top: 28px;
 }
 
 .returns-card,
 .faq-item,
+.proof-stat,
+.quote-card,
 .cta-panel,
 .footer-card {
   padding: 34px 30px;
@@ -433,11 +463,66 @@ a {
 .faq-list {
   display: grid;
   gap: 16px;
+  margin-top: 28px;
 }
 
 .faq-item h3 {
   margin-top: 0;
   margin-bottom: 10px;
+}
+
+.faq-item {
+  background: transparent;
+  border: 0;
+  border-left: 3px solid var(--brand);
+  box-shadow: none;
+  padding: 8px 0 8px 22px;
+}
+
+.proof-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.proof-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.proof-stat {
+  text-align: center;
+  padding: 28px 22px;
+}
+
+.proof-stat__number {
+  font-family: "Kanit", sans-serif;
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  line-height: 1;
+  color: var(--muted-strong);
+  margin-bottom: 14px;
+}
+
+.proof-stat h3 {
+  margin: 0 0 8px;
+}
+
+.quote-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.quote-card p:first-child {
+  font-style: italic;
+  font-size: 1.08rem;
+}
+
+.quote-card cite {
+  display: block;
+  margin-top: 18px;
+  color: var(--muted-strong);
+  font-style: normal;
 }
 
 .cta-grid {
@@ -500,6 +585,7 @@ a {
 
 #how-it-works .section-card,
 #plans .section-card,
+#proof .section-card,
 #returns .section-card,
 #faq .section-card,
 #join .cta-panel,
@@ -509,6 +595,7 @@ a {
 
 #how-it-works .section-card,
 #plans .section-card,
+#proof .section-card,
 #returns .section-card,
 #faq .section-card,
 #join,
@@ -526,6 +613,7 @@ a {
 }
 
 #plans .section-card,
+#proof .section-card,
 #join .cta-panel,
 .footer-card {
   background:
@@ -534,10 +622,20 @@ a {
   background-size: cover;
 }
 
+#join .cta-panel:first-child {
+  background:
+    linear-gradient(180deg, rgba(16, 12, 53, 0.68), rgba(16, 12, 53, 0.88)),
+    url("https://imgproxy.gamma.app/resize/quality:80/resizing_type:fit/width:2400/https://cdn.gamma.app/0ut8r7n9nio6c9h/generated-images/jFwt_9v6e6ns0sbcpipPE.png");
+  background-size: cover;
+  background-position: center;
+}
+
 @media screen and (max-width: 989px) {
   .hero__card,
   .steps-grid,
   .plans-grid,
+  .proof-stats,
+  .quote-grid,
   .returns-grid,
   .cta-grid,
   .footer-grid {
@@ -587,6 +685,7 @@ a {
 
   #how-it-works .section-card,
   #plans .section-card,
+  #proof .section-card,
   #returns .section-card,
   #faq .section-card,
   #join .cta-panel,
