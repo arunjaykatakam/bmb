@@ -689,6 +689,10 @@ a {
   line-height: 1.45;
 }
 
+#plans .plan-card p {
+  max-width: none;
+}
+
 #plans .plan-button {
   min-height: 46px;
   padding: 0.75rem 1.2rem;
