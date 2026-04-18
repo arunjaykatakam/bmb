@@ -57,7 +57,7 @@
             "feature_3": "Access to Basic and Intermediate sets",
             "feature_4": "Ages 4-10 recommended",
             "button_label": "Join Now",
-            "link": "#join",
+            "link": "/products/starter-builder-membership",
             "featured": true
           }
         },
@@ -73,7 +73,7 @@
             "feature_3": "Access to all standard sets",
             "feature_4": "Ages 8-12 recommended",
             "button_label": "Most Popular",
-            "link": "#join",
+            "link": "/products/unlimited-builder-membership",
             "featured": false
           }
         },
@@ -89,7 +89,7 @@
             "feature_3": "Exclusive Technic & advanced sets",
             "feature_4": "Ages 8-12 recommended",
             "button_label": "Go Premium",
-            "link": "#join",
+            "link": "/products/master-builder",
             "featured": false
           }
         }
