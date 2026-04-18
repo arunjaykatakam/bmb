@@ -954,3 +954,133 @@ a {
     grid-template-columns: 1fr;
   }
 }
+
+.cart-card {
+  padding: clamp(40px, 5vw, 72px);
+  background:
+    linear-gradient(180deg, rgba(39, 28, 78, 0.92), rgba(16, 12, 53, 0.98)),
+    url("https://cdn.gamma.app/theme_images/standard/0ec3642882d44bc08a427fd6a02e4c18/original/Blueberry---2.jpg");
+  background-size: cover;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cart-title {
+  margin-top: 10px;
+  margin-bottom: 28px;
+}
+
+.cart-form {
+  display: grid;
+  gap: 28px;
+}
+
+.cart-lines {
+  display: grid;
+  gap: 18px;
+}
+
+.cart-line {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 22px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(16, 12, 53, 0.42);
+}
+
+.cart-line__media img,
+.cart-line__placeholder {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cart-line__placeholder {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+}
+
+.cart-line__details {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.cart-line__title {
+  margin: 0;
+  font-family: "Kanit", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.cart-line__variant {
+  margin: 0;
+  color: var(--muted);
+}
+
+.cart-line__price {
+  font-family: "Kanit", sans-serif;
+  font-size: 1.35rem;
+  color: #f66b67;
+}
+
+.cart-line__quantity {
+  max-width: 160px;
+}
+
+.cart-line__remove {
+  color: #ff93a5;
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+.cart-summary {
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(16, 12, 53, 0.48);
+}
+
+.cart-summary__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  font-family: "Kanit", sans-serif;
+  font-size: 1.4rem;
+}
+
+.cart-summary__note {
+  color: var(--muted);
+  margin: 14px 0 22px;
+}
+
+.cart-summary__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cart-summary__button {
+  min-width: 200px;
+}
+
+.cart-empty {
+  display: grid;
+  gap: 18px;
+}
+
+@media screen and (max-width: 749px) {
+  .cart-line {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-summary__actions {
+    flex-direction: column;
+  }
+
+  .cart-summary__button {
+    width: 100%;
+  }
+}
