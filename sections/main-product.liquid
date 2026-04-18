@@ -46,7 +46,8 @@
             </div>
           {% endif %}
 
-          {% form 'product', product, class: 'product-form', id: 'ProductForm-' | append: section.id %}
+          {% assign product_form_id = 'ProductForm-' | append: section.id %}
+          {% form 'product', product, class: 'product-form', id: product_form_id %}
             {% if product.has_only_default_variant == false %}
               <label class="product-form__label" for="VariantSelect-{{ section.id }}">Options</label>
               <select id="VariantSelect-{{ section.id }}" name="id" class="product-form__select">
@@ -105,7 +106,7 @@
 
 <script>
   (() => {
-    const form = document.getElementById('ProductForm-{{ section.id }}');
+    const form = document.getElementById('{{ product_form_id }}');
     if (!form) return;
 
     const buyNowButton = form.querySelector('[data-buy-now]');
