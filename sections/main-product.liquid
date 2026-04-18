@@ -46,7 +46,7 @@
             </div>
           {% endif %}
 
-          {% form 'product', product, class: 'product-form' %}
+          {% form 'product', product, class: 'product-form', id: 'ProductForm-' | append: section.id %}
             {% if product.has_only_default_variant == false %}
               <label class="product-form__label" for="VariantSelect-{{ section.id }}">Options</label>
               <select id="VariantSelect-{{ section.id }}" name="id" class="product-form__select">
@@ -83,6 +83,7 @@
                     <button
                       type="submit"
                       name="add"
+                      data-buy-now
                       class="button product-form__submit"
                       {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}
                     >
@@ -101,6 +102,43 @@
     </div>
   </div>
 </section>
+
+<script>
+  (() => {
+    const form = document.getElementById('ProductForm-{{ section.id }}');
+    if (!form) return;
+
+    const buyNowButton = form.querySelector('[data-buy-now]');
+    if (!buyNowButton) return;
+
+    form.addEventListener('submit', async (event) => {
+      if (event.submitter !== buyNowButton) return;
+
+      event.preventDefault();
+      buyNowButton.disabled = true;
+      const originalLabel = buyNowButton.textContent;
+      buyNowButton.textContent = 'Redirecting...';
+
+      try {
+        const response = await fetch('{{ routes.cart_add_url }}', {
+          method: 'POST',
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+          },
+          body: new FormData(form)
+        });
+
+        if (!response.ok) throw new Error('Unable to add item');
+
+        window.location.href = '/checkout';
+      } catch (error) {
+        buyNowButton.disabled = false;
+        buyNowButton.textContent = originalLabel;
+        alert('We could not send this item straight to checkout. Please try again.');
+      }
+    });
+  })();
+</script>
 
 {% schema %}
 {
@@ -131,7 +169,7 @@
           "type": "text",
           "id": "button_label",
           "label": "Button label",
-          "default": "Add to cart"
+          "default": "Buy now"
         }
       ]
     }
@@ -141,9 +179,6 @@
     {
       "name": "Main product",
       "blocks": [
-        {
-          "type": "quantity"
-        },
         {
           "type": "buy_buttons"
         }
