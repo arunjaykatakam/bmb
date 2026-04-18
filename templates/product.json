@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "quantity": {
+          "type": "quantity",
+          "settings": {
+            "label": "Quantity"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "button_label": "Add to cart"
+          }
+        }
+      },
+      "block_order": [
+        "quantity",
+        "buy_buttons"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

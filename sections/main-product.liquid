@@ -1,0 +1,154 @@
+<section class="product-shell section-shell">
+  <div class="page-width">
+    <div class="section-card product-card">
+      <div class="product-layout">
+        <div class="product-media">
+          {% if product.featured_media %}
+            <div class="product-media__featured">
+              {{
+                product.featured_media
+                | image_url: width: 1400
+                | image_tag: loading: 'eager', widths: '640, 960, 1400', alt: product.featured_media.alt
+              }}
+            </div>
+          {% else %}
+            <div class="product-media__placeholder">No image yet</div>
+          {% endif %}
+
+          {% if product.media.size > 1 %}
+            <div class="product-media__thumbs">
+              {% for media in product.media limit: 4 %}
+                <div class="product-media__thumb">
+                  {{ media | image_url: width: 360 | image_tag: loading: 'lazy', widths: '180, 360', alt: media.alt }}
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+
+        <div class="product-summary">
+          {% if product.vendor != blank %}
+            <div class="eyebrow">{{ product.vendor }}</div>
+          {% endif %}
+
+          <h1 class="section-heading product-title">{{ product.title }}</h1>
+
+          <div class="product-price">
+            {% if product.compare_at_price_max > product.price %}
+              <span class="product-price__compare">{{ product.compare_at_price_max | money }}</span>
+            {% endif %}
+            <span class="product-price__current">{{ product.price | money }}</span>
+          </div>
+
+          {% if product.description != blank %}
+            <div class="section-copy product-copy rte">
+              {{ product.description }}
+            </div>
+          {% endif %}
+
+          {% form 'product', product, class: 'product-form' %}
+            {% if product.has_only_default_variant == false %}
+              <label class="product-form__label" for="VariantSelect-{{ section.id }}">Options</label>
+              <select id="VariantSelect-{{ section.id }}" name="id" class="product-form__select">
+                {% for variant in product.variants %}
+                  <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %}>
+                    {{ variant.title }} - {{ variant.price | money }}
+                  </option>
+                {% endfor %}
+              </select>
+            {% else %}
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            {% endif %}
+
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when '@app' %}
+                  <div class="product-app-block" {{ block.shopify_attributes }}>
+                    {% render block %}
+                  </div>
+                {% when 'quantity' %}
+                  <div class="product-form__quantity" {{ block.shopify_attributes }}>
+                    <label class="product-form__label" for="Quantity-{{ section.id }}">{{ block.settings.label }}</label>
+                    <input
+                      id="Quantity-{{ section.id }}"
+                      class="product-form__input"
+                      type="number"
+                      name="quantity"
+                      min="1"
+                      value="1"
+                    >
+                  </div>
+                {% when 'buy_buttons' %}
+                  <div class="product-form__actions" {{ block.shopify_attributes }}>
+                    <button
+                      type="submit"
+                      name="add"
+                      class="button product-form__submit"
+                      {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}
+                    >
+                      {% if product.selected_or_first_available_variant.available %}
+                        {{ block.settings.button_label }}
+                      {% else %}
+                        Sold out
+                      {% endif %}
+                    </button>
+                  </div>
+              {% endcase %}
+            {% endfor %}
+          {% endform %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main product",
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "quantity",
+      "name": "Quantity",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Quantity"
+        }
+      ]
+    },
+    {
+      "type": "buy_buttons",
+      "name": "Buy buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Add to cart"
+        }
+      ]
+    }
+  ],
+  "settings": [],
+  "presets": [
+    {
+      "name": "Main product",
+      "blocks": [
+        {
+          "type": "quantity"
+        },
+        {
+          "type": "buy_buttons"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
