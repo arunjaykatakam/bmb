@@ -1,0 +1,182 @@
+<section class="collection-shell section-shell">
+  <div class="page-width">
+    <div class="section-card collection-card">
+      <div class="collection-hero">
+        <div>
+          <div class="eyebrow">{{ section.settings.eyebrow }}</div>
+          <h1 class="section-heading collection-title">
+            {% if collection %}
+              {{ collection.title }}
+            {% else %}
+              LEGO catalog
+            {% endif %}
+          </h1>
+          <div class="section-copy collection-copy">
+            {% if collection.description != blank %}
+              {{ collection.description }}
+            {% else %}
+              {{ section.settings.empty_description }}
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="collection-tier-nav">
+          {% if section.settings.all_sets_link != blank %}
+            <a class="button-secondary collection-tier-nav__link" href="{{ section.settings.all_sets_link }}">{{ section.settings.all_sets_label }}</a>
+          {% endif %}
+          {% if section.settings.starter_link != blank %}
+            <a class="button-secondary collection-tier-nav__link" href="{{ section.settings.starter_link }}">{{ section.settings.starter_label }}</a>
+          {% endif %}
+          {% if section.settings.unlimited_link != blank %}
+            <a class="button-secondary collection-tier-nav__link" href="{{ section.settings.unlimited_link }}">{{ section.settings.unlimited_label }}</a>
+          {% endif %}
+          {% if section.settings.master_link != blank %}
+            <a class="button-secondary collection-tier-nav__link" href="{{ section.settings.master_link }}">{{ section.settings.master_label }}</a>
+          {% endif %}
+        </div>
+      </div>
+
+      {% if collection and collection.products_count > 0 %}
+        <div class="catalog-grid">
+          {% for product in collection.products %}
+            {% assign membership_tier = '' %}
+            {% for tag in product.tags %}
+              {% if tag contains 'tier_' %}
+                {% assign membership_tier = tag | remove: 'tier_' | replace: '-', ' ' %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+
+            <article class="catalog-card">
+              <a class="catalog-card__media" href="{{ product.url }}">
+                {% if product.featured_media %}
+                  {{
+                    product.featured_media
+                    | image_url: width: 900
+                    | image_tag: loading: 'lazy', widths: '320, 520, 720, 900', alt: product.featured_media.alt
+                  }}
+                {% else %}
+                  <div class="catalog-card__placeholder">No image yet</div>
+                {% endif %}
+              </a>
+
+              <div class="catalog-card__body">
+                <div class="catalog-card__meta">
+                  {% if membership_tier != blank %}
+                    <span class="catalog-card__tier">{{ membership_tier }}</span>
+                  {% endif %}
+                  {% if product.vendor != blank %}
+                    <span class="catalog-card__vendor">{{ product.vendor }}</span>
+                  {% endif %}
+                </div>
+
+                <h2 class="catalog-card__title">
+                  <a href="{{ product.url }}">{{ product.title }}</a>
+                </h2>
+
+                {% if product.description != blank %}
+                  <div class="catalog-card__copy">
+                    {{ product.description | strip_html | truncatewords: 24 }}
+                  </div>
+                {% endif %}
+
+                <div class="catalog-card__footer">
+                  <span class="catalog-card__price">{{ product.price | money }}</span>
+                  <a class="button catalog-card__button" href="{{ product.url }}">{{ section.settings.card_button_label }}</a>
+                </div>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="catalog-empty">
+          <p class="section-copy">{{ section.settings.empty_state_copy }}</p>
+          <div class="button-row">
+            {% if section.settings.starter_link != blank %}
+              <a class="button-secondary" href="{{ section.settings.starter_link }}">{{ section.settings.starter_label }}</a>
+            {% endif %}
+            {% if section.settings.master_link != blank %}
+              <a class="button" href="{{ section.settings.master_link }}">{{ section.settings.master_label }}</a>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Main collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Borrow by membership tier"
+    },
+    {
+      "type": "textarea",
+      "id": "empty_description",
+      "label": "Fallback description",
+      "default": "Browse our growing LEGO library by collection. Create separate collections for Starter, Unlimited, and Master members so each subscription tier sees the right sets."
+    },
+    {
+      "type": "text",
+      "id": "card_button_label",
+      "label": "Card button label",
+      "default": "View set"
+    },
+    {
+      "type": "text",
+      "id": "all_sets_label",
+      "label": "All sets label",
+      "default": "All sets"
+    },
+    {
+      "type": "url",
+      "id": "all_sets_link",
+      "label": "All sets link"
+    },
+    {
+      "type": "text",
+      "id": "starter_label",
+      "label": "Starter label",
+      "default": "Starter sets"
+    },
+    {
+      "type": "url",
+      "id": "starter_link",
+      "label": "Starter link"
+    },
+    {
+      "type": "text",
+      "id": "unlimited_label",
+      "label": "Unlimited label",
+      "default": "Unlimited sets"
+    },
+    {
+      "type": "url",
+      "id": "unlimited_link",
+      "label": "Unlimited link"
+    },
+    {
+      "type": "text",
+      "id": "master_label",
+      "label": "Master label",
+      "default": "Master sets"
+    },
+    {
+      "type": "url",
+      "id": "master_link",
+      "label": "Master link"
+    },
+    {
+      "type": "textarea",
+      "id": "empty_state_copy",
+      "label": "Empty state copy",
+      "default": "This collection is ready, but it doesn't have any LEGO sets in it yet. Add products in Shopify admin and assign them to the right membership collection."
+    }
+  ]
+}
+{% endschema %}

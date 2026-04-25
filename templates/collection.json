@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "all_sets_link": "/collections/all",
+        "starter_link": "/collections/starter-builder",
+        "unlimited_link": "/collections/unlimited-builder",
+        "master_link": "/collections/master-builder"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
